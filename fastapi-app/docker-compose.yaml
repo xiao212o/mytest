@@ -1,0 +1,40 @@
+#version: '3.1'
+services:
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=debugdb
+      - TZ=Asia/Shanghai
+    command: [
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci'
+    ]
+    networks:
+      - dev_net
+
+  phpmyadmin:
+    image: "phpmyadmin/phpmyadmin"
+    depends_on:
+      - mysql
+    ports:
+      - "8927:80"
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=123456
+    networks:
+      - dev_net
+
+networks:
+  # 配置docker network
+  dev_net:
+    driver: bridge
+    name: dev_net
+    ipam:
+      config:
+        # 子网络
+        - subnet: 10.11.0.0/16

@@ -1,0 +1,16 @@
+{
+    "mysql": {
+        "host": "mysql",
+        "port": 3306,
+        "name": "debugdb",
+        "user": "root",
+        "password": "123456"
+    },
+    "module": {
+        "debug": true,
+        "workers": 1
+    },
+    "logger": {
+        "level": "DEBUG"
+    }
+}

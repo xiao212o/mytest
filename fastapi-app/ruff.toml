@@ -1,0 +1,10 @@
+# Same as Black.
+line-length = 150
+
+ignore = ["E501"]
+
+[per-file-ignores]
+"schema/autoload.py" = ["F401"]
+"models/models.py" = ["F401"]
+"schema/__init__.py" = ["F401", "F403"]
+"models/__init__.py" = ["F403"]
